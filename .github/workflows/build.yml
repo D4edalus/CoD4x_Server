@@ -63,14 +63,14 @@ jobs:
         run: |
           $PSVersionTable
           
-          Invoke-Webrequest -Uri https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/8.1.0/threads-posix/dwarf/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z -OutFile mingw.7z -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::FireFox
+          curl -L https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/8.1.0/threads-posix/dwarf/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z -o mingw.7z
           
           7z x mingw.7z -y | Out-Null
       
       - name: Set up pexports
         shell: pwsh
         run: |
-          Invoke-Webrequest -Uri https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz -OutFile pexports.tar.xz -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::FireFox
+          curl https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz -o pexports.tar.xz
           7z x pexports.tar.xz -y | Out-Null
           7z x pexports.tar -y | Out-Null
       
