@@ -55,14 +55,18 @@ jobs:
           msystem: MINGW64
           update: true
           install: git mingw-w64-x86_64-toolchain
-      
+      - name: Tools
+        run: |
+          choco install 7zip      
       - name: Set up pexports
+        shell: pwsh
         run: |
           curl -o "pexports.tar.xz" "https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz"
           7z x pexports.tar.xz | Out-Null
           7z x pexports.tar | Out-Null
           
       - name: Set up nasm
+        shell: pwsh
         run: |
           curl -o nasminst.exe https://github.com/callofduty4x/CoD4x_Server/blob/master/tools/nasm-2.14rc0-installer-x86.exe?raw=true
           .\nasminst.exe /S
