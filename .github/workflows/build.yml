@@ -87,7 +87,7 @@ jobs:
         run: dir "C:/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/bin/../lib/gcc/"
           
       - name: build
-      - shell: msys2 {0}
+        shell: msys2 {0}
         run: |
           [Environment]::SetEnvironmentVariable("PATH",  "C:\Program Files (x86)\NASM;$($env:path)")
           mingw32-make.exe
