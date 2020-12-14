@@ -60,13 +60,15 @@ jobs:
           7z
       
       - name: Install mingw
+        shell: pwsh
         run: |
-          curl -o mingw.tar.xz -y "https://deac-riga.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/8.1.0/threads-posix/dwarf/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z"
+          curl -o mingw.tar.xz "https://deac-riga.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/8.1.0/threads-posix/dwarf/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z"
           7z x mingw.tar.xz | Out-Null
       
       - name: Set up pexports
+        shell: pwsh
         run: |
-          curl -o "pexports.tar.xz" "https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz"
+          curl -o pexports.tar.xz "https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz"
           7z x pexports.tar.xz -y | Out-Null
           7z x pexports.tar -y | Out-Null
       
