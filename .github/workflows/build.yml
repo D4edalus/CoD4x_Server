@@ -48,21 +48,26 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: msys2/setup-msys2@v2
-        with:
-          msystem: MINGW32
-          update: true
-          install: git mingw-w64-i686-toolchain
+      #- uses: msys2/setup-msys2@v2
+      #  with:
+      #    msystem: MINGW32
+      #    update: true
+      #    install: git mingw-w64-i686-toolchain
       
       - name: Install 7zip
         run: |
           choco install 7zip      
-      #- name: Set up pexports
-      #  shell: pwsh
-      #  run: |
-      #    curl -o "pexports.tar.xz" "https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz"
-      #    7z x pexports.tar.xz | Out-Null
-      #    7z x pexports.tar | Out-Null
+      - name: Set up pexports
+        shell: pwsh
+        run: |
+          curl -o "pexports.tar.xz" "https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz"
+          7z x pexports.tar.xz -y | Out-Null
+          7z x pexports.tar -y | Out-Null
+      
+      - name: Install mingw
+        run: |
+          curl -o mingw.tar.xz -y "https://deac-riga.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/8.1.0/threads-posix/dwarf/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z"
+          7z x mingw.tar.xz | Out-Null
       
       - name: Install nasm
         run: |
@@ -83,13 +88,10 @@ jobs:
       #     
       #    nasm -v
           
-      - name: show chain
-        run: dir "C:/ProgramData/Chocolatey/lib/mingw/tools/install/mingw64/bin/../lib/gcc/"
-          
       - name: build
-        shell: msys2 {0}
+        shell: cmd
         run: |
-          set PATH=%PATH%;C:\Program Files (x86)\NASM
-          mingw32-make.exe
+          set PATH=%PATH%;C:\Program Files (x86)\NASM;$pwd\bin;$pwd\mingw32\bin
+          mingw32-make
           
       
