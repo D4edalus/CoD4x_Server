@@ -49,6 +49,7 @@ jobs:
         with:
           name: cod4x18_dedrun
           path: bin/cod4x18_dedrun
+          retention-days: 7
           
   build-win:
     runs-on: windows-latest
@@ -116,5 +117,6 @@ jobs:
         with:
           name: cod4x18_dedrun.exe
           path: bin/cod4x18_dedrun.exe
+          retention-days: 7
           
       
