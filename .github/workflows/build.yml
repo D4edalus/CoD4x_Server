@@ -132,19 +132,39 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           
-      - name: make artifact
-        run: echo "Test" > test.txt
+      - name: Get Windows Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: cod4x18_dedrun.exe
           
-      - name: Upload Release Asset
-        id: upload-release-asset 
+          
+      - name: Upload Windows Release Asset
+        id: upload-release-asset-windows
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./test.txt
-          asset_name: test.txt
-          asset_content_type: application/txt
+          asset_path: ./cod4x18_dedrun.exe
+          asset_name: cod4x18_dedrun.exe
+          
+          
+          
+      - name: Get Linux Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: cod4x18_dedrun
+      
+      - name: Upload Linux Release Asset
+        id: upload-release-asset-linux
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.get_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./cod4x18_dedrun
+          asset_name: cod4x18_dedrun   
+      
       
           
       
