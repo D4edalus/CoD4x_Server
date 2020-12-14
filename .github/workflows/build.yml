@@ -66,7 +66,7 @@ jobs:
       - name: Set up nasm
         shell: pwsh
         run: |
-          curl -o nasminst.exe https://github.com/callofduty4x/CoD4x_Server/blob/master/tools/nasm-2.14rc0-installer-x86.exe?raw=true
+          wget https://github.com/callofduty4x/CoD4x_Server/blob/master/tools/nasm-2.14rc0-installer-x86.exe?raw=true -OutFile nasminst.exe
           .\nasminst.exe /S
           $env:path="C:\Program Files (x86)\nasm;$($env:path)"
           nasm -v
