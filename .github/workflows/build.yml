@@ -28,10 +28,12 @@ jobs:
       # Runs a single command using the runners shell
       - name: Set up dependencies
         run: |
-          sudo apt install gcc-8 gcc-8-multilib
+          sudo apt install gcc-8 gcc-8-multilib g++-8 g++-multilib
           sudo dpkg --add-architecture i386
           sudo apt update
           sudo apt-get install nasm:i386 paxctl:i386 libtommath-dev:i386
+          
+      - name: Show Build Env
           gcc -v
           g++ -v
   
