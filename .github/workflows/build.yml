@@ -34,6 +34,7 @@ jobs:
           sudo apt-get install nasm:i386 paxctl:i386 libtommath-dev:i386
           
       - name: Show Build Env
+        run: |
           gcc -v
           g++ -v
   
