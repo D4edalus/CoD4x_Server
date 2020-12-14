@@ -148,7 +148,7 @@ jobs:
           upload_url: ${{ steps.get_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: ./cod4x18_dedrun.exe
           asset_name: cod4x18_dedrun.exe
-          
+          asset_content_type: application/octet-stream
           
           
       - name: Get Linux Artifacts
@@ -165,6 +165,7 @@ jobs:
           upload_url: ${{ steps.get_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: ./cod4x18_dedrun
           asset_name: cod4x18_dedrun   
+          asset_content_type: application/octet-stream
       
       
           
