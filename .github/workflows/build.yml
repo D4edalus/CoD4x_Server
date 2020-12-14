@@ -62,19 +62,26 @@ jobs:
       #    curl -o "pexports.tar.xz" "https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz"
       #    7z x pexports.tar.xz | Out-Null
       #    7z x pexports.tar | Out-Null
-          
-      - name: Set up nasm
+      
+      - name: nasm choco
         run: |
-          curl -o nasminst.exe https://www.nasm.us/pub/nasm/releasebuilds/2.14rc15/win32/nasm-2.14rc15-installer-x86.exe
-          .\nasminst.exe /S
+          choco install nasm --forcex86
           dir ${env:ProgramFiles(x86)}
+          dir ${env:ProgramFiles}
           dir ${env:LOCALAPPDATA}\bin
           
-          Invoke-Expression "& '${env:ProgramFiles(x86)}\NASM\nasm.exe'"          
-      
-          [Environment]::SetEnvironmentVariable("PATH",  "$env:LOCALAPPDATA\bin\NASM;$pwd\bin;C:\Program Files (x86)\NASM;$($env:path)")
-          
-          nasm -v
+      #- name: Set up nasm
+      #  run: |
+      #    curl -o nasminst.exe https://www.nasm.us/pub/nasm/releasebuilds/2.14rc15/win32/nasm-2.14rc15-installer-x86.exe
+      #    .\nasminst.exe /S
+      #    dir ${env:ProgramFiles(x86)}
+      #    dir ${env:LOCALAPPDATA}\bin
+      #    
+      #    Invoke-Expression "& '${env:ProgramFiles(x86)}\NASM\nasm.exe'"          
+      # 
+      #     [Environment]::SetEnvironmentVariable("PATH",  "$env:LOCALAPPDATA\bin\NASM;$pwd\bin;C:\Program Files (x86)\NASM;$($env:path)")
+      #     
+      #    nasm -v
           
       - name: Locate Nasm
         run: Get-ChildItem -Path C:\ -Filter nasm.exe -Recurse -ErrorAction SilentlyContinue -Force | Select-Object -First 1
