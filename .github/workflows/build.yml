@@ -66,9 +66,8 @@ jobs:
       - name: nasm choco
         run: |
           choco install nasm --forcex86
-          dir ${env:ProgramFiles(x86)}
-          dir ${env:ProgramFiles}
-          dir ${env:LOCALAPPDATA}\bin
+          [Environment]::SetEnvironmentVariable("PATH",  "C:\Program Files (x86)\NASM;$($env:path)")
+          nasm -v
           
       #- name: Set up nasm
       #  run: |
