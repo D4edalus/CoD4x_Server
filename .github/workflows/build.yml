@@ -56,12 +56,12 @@ jobs:
       - name: Tools
         run: |
           choco install 7zip      
-      - name: Set up pexports
-        shell: pwsh
-        run: |
-          curl -o "pexports.tar.xz" "https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz"
-          7z x pexports.tar.xz | Out-Null
-          7z x pexports.tar | Out-Null
+      #- name: Set up pexports
+      #  shell: pwsh
+      #  run: |
+      #    curl -o "pexports.tar.xz" "https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz"
+      #    7z x pexports.tar.xz | Out-Null
+      #    7z x pexports.tar | Out-Null
           
       - name: Set up nasm
         shell: pwsh
