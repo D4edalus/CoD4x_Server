@@ -42,6 +42,7 @@ jobs:
       - name: Build
         run: |
           make
+          make plugins
           
   build-win:
     runs-on: windows-latest
@@ -102,5 +103,6 @@ jobs:
         run: |
           [Environment]::SetEnvironmentVariable("PATH",  "$pwd\mingw32\bin;%PATH%;C:\Program Files (x86)\NASM;$pwd\bin;$($env:path)")
           mingw32-make
+          mingw32-make plugins
           
       
