@@ -67,14 +67,17 @@ jobs:
         run: |
           curl -o nasminst.exe https://www.nasm.us/pub/nasm/releasebuilds/2.14rc15/win32/nasm-2.14rc15-installer-x86.exe
           .\nasminst.exe /S
-          echo ${env:ProgramFiles(x86)}
-          Get-ChildItem -Path C:\ -Filter nasm.exe -Recurse -ErrorAction SilentlyContinue -Force | Select-Object -First 1
+          dir ${env:ProgramFiles(x86)}
+          dir ${env:LOCALAPPDATA}\bin
           
           Invoke-Expression "& '${env:ProgramFiles(x86)}\NASM\nasm.exe'"          
       
           [Environment]::SetEnvironmentVariable("PATH",  "$env:LOCALAPPDATA\bin\NASM;$pwd\bin;C:\Program Files (x86)\NASM;$($env:path)")
           
           nasm -v
+          
+      - name: Locate Nasm
+        run: Get-ChildItem -Path C:\ -Filter nasm.exe -Recurse -ErrorAction SilentlyContinue -Force | Select-Object -First 1
           
       #- name: build
       #  run: |
