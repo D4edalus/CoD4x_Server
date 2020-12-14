@@ -44,6 +44,12 @@ jobs:
           make
           make plugins
           
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: cod4x18_dedrun
+          path: bin/cod4x18_dedrun
+          
   build-win:
     runs-on: windows-latest
 
@@ -104,5 +110,11 @@ jobs:
           [Environment]::SetEnvironmentVariable("PATH",  "$pwd\mingw32\bin;%PATH%;C:\Program Files (x86)\NASM;$pwd\bin;$($env:path)")
           mingw32-make
           mingw32-make plugins
+          
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: cod4x18_dedrun.exe
+          path: bin/cod4x18_dedrun.exe
           
       
