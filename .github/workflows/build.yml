@@ -62,7 +62,7 @@ jobs:
       - name: Install mingw
         shell: pwsh
         run: |
-          Invoke-WebRequest "https://deac-riga.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/8.1.0/threads-posix/dwarf/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z"
+          Invoke-WebRequest "https://deac-riga.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/8.1.0/threads-posix/dwarf/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z" -ContentType "application/x-7z-compressed"
           
           7z x i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z -y | Out-Null
       
