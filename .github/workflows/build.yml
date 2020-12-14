@@ -87,6 +87,7 @@ jobs:
           
       - name: build
         run: |
+          [Environment]::SetEnvironmentVariable("PATH",  "C:\Program Files (x86)\NASM;$($env:path)")
           mingw32-make.exe
           
       
