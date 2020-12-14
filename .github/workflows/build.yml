@@ -98,11 +98,10 @@ jobs:
       #    nasm -v
           
       - name: build
-        shell: cmd
+        shell: pwsh
         run: |
-          dir
-          dir mingw32
           set PATH=$pwd\mingw32\bin;%PATH%;C:\Program Files (x86)\NASM;$pwd\bin
+          [Environment]::SetEnvironmentVariable("PATH",  "$pwd\mingw32\bin;%PATH%;C:\Program Files (x86)\NASM;$pwd\bin;$($env:path)")
           mingw32-make
           
       
