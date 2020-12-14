@@ -70,7 +70,7 @@ jobs:
       - name: Set up pexports
         shell: pwsh
         run: |
-          curl https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz -o pexports.tar.xz
+          curl -L https://github.com/callofduty4x/CoD4x_Server/raw/master/tools/pexports-0.47-mingw32-bin.tar.xz -o pexports.tar.xz
           7z x pexports.tar.xz -y | Out-Null
           7z x pexports.tar -y | Out-Null
       
