@@ -66,7 +66,7 @@ jobs:
       - name: Set up nasm
         run: |
           curl -o nasminst.exe https://www.nasm.us/pub/nasm/releasebuilds/2.14rc15/win32/nasm-2.14rc15-installer-x86.exe
-          nasminst.exe /S
+          .\nasminst.exe /S
           Invoke-Expression "$env:LOCALAPPDATA\bin\NASM\nasm.exe -v"
       
           [Environment]::SetEnvironmentVariable("PATH",  "$env:LOCALAPPDATA\bin\NASM;$pwd\bin;C:\Program Files (x86)\nasm;$($env:path)")
