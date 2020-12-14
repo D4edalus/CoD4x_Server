@@ -100,7 +100,6 @@ jobs:
       - name: build
         shell: pwsh
         run: |
-          set PATH=$pwd\mingw32\bin;%PATH%;C:\Program Files (x86)\NASM;$pwd\bin
           [Environment]::SetEnvironmentVariable("PATH",  "$pwd\mingw32\bin;%PATH%;C:\Program Files (x86)\NASM;$pwd\bin;$($env:path)")
           mingw32-make
           
