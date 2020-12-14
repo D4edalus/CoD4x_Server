@@ -47,15 +47,16 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      #- uses: actions/checkout@v2
-      #- uses: msys2/setup-msys2@v2
-      #  with:
-      #    msystem: MINGW64
-      #    update: true
-      #    install: git mingw-w64-x86_64-toolchain
-      #- name: Tools
-      #  run: |
-      #    choco install 7zip      
+      - uses: actions/checkout@v2
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: git mingw-w64-x86_64-toolchain
+      
+      - name: Install 7zip
+        run: |
+          choco install 7zip      
       #- name: Set up pexports
       #  shell: pwsh
       #  run: |
@@ -63,7 +64,7 @@ jobs:
       #    7z x pexports.tar.xz | Out-Null
       #    7z x pexports.tar | Out-Null
       
-      - name: nasm choco
+      - name: Install nasm
         run: |
           choco install nasm --forcex86
           [Environment]::SetEnvironmentVariable("PATH",  "C:\Program Files (x86)\NASM;$($env:path)")
@@ -82,11 +83,10 @@ jobs:
       #     
       #    nasm -v
           
-      - name: Locate Nasm
-        run: Get-ChildItem -Path C:\ -Filter nasm.exe -Recurse -ErrorAction SilentlyContinue -Force | Select-Object -First 1
+      
           
-      #- name: build
-      #  run: |
-      #    mingw32-make.exe
+      - name: build
+        run: |
+          mingw32-make.exe
           
       
