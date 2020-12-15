@@ -48,7 +48,7 @@ jobs:
           make plugins
           
       - name: Create Zip
-        run: 7z a -tzip cod4_server_linux.zip 
+        run: zip cod4_server_linux.zip  bin/cod4x18_dedrun
           
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
