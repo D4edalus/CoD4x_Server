@@ -47,11 +47,14 @@ jobs:
           make
           make plugins
           
+      - name: Create Zip
+        run: 7z a -tzip cod4_server_linux.zip 
+          
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: cod4x18_dedrun
-          path: bin/cod4x18_dedrun
+          name: cod4_server_linux.zip
+          path: cod4_server_linux.zip
           retention-days: 7
           
   build-win:
@@ -115,11 +118,14 @@ jobs:
           mingw32-make
           mingw32-make plugins
           
+      - name: Create Zip
+        run: 7z a -tzip cod4_server_windows.zip bin/cod4x18_dedrun.exe
+          
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: cod4x18_dedrun.exe
-          path: bin/cod4x18_dedrun.exe
+          name: cod4_server_windows.zip 
+          path: cod4_server_windows.zip 
           retention-days: 7
           
   release:
