@@ -50,6 +50,15 @@ jobs:
           
       - name: Create Zip
         run: zip cod4_server_linux.zip  bin/cod4x18_dedrun
+      
+      - name: Add Files to Zip
+        run: |
+          mkdir bin/plugins
+          cp $(find plugins -name *.so) bin/plugins
+          
+          cd bin
+          zip ../cod4_server_linux.zip  *
+          cd ..
           
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
