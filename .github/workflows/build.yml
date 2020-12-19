@@ -142,7 +142,7 @@ jobs:
       - name: Get Windows Artifacts
         uses: actions/download-artifact@v2
         with:
-          name: cod4x18_dedrun.exe
+          name: cod4_server_windows.zip
           
           
       - name: Upload Windows Release Asset
@@ -152,15 +152,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./cod4x18_dedrun.exe
-          asset_name: cod4x18_dedrun.exe
+          asset_path: cod4_server_windows.zip
+          asset_name: cod4_server_windows.zip
           asset_content_type: application/octet-stream
           
           
       - name: Get Linux Artifacts
         uses: actions/download-artifact@v2
         with:
-          name: cod4x18_dedrun
+          name: cod4_server_linux.zip
       
       - name: Upload Linux Release Asset
         id: upload-release-asset-linux
@@ -169,8 +169,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./cod4x18_dedrun
-          asset_name: cod4x18_dedrun   
+          asset_path: cod4_server_linux.zip
+          asset_name: cod4_server_linux.zip
           asset_content_type: application/octet-stream
       
       
