@@ -31,6 +31,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Set up dependencies
         run: |
+          sudo apt update
           sudo apt install gcc-8 gcc-8-multilib g++-8 g++-multilib
           sudo dpkg --add-architecture i386
           sudo apt update
