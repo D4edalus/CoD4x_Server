@@ -44,7 +44,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build
         run: |
-          make
+          make OFFICIAL=true
           make plugins
           
       - name: Create Zip
@@ -115,7 +115,7 @@ jobs:
         shell: pwsh
         run: |
           [Environment]::SetEnvironmentVariable("PATH",  "$pwd\mingw32\bin;%PATH%;C:\Program Files (x86)\NASM;$pwd\bin;$($env:path)")
-          mingw32-make
+          mingw32-make OFFICIAL=true
           mingw32-make plugins
           
       - name: Create Zip
